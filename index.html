@@ -120,13 +120,101 @@ p{color:var(--muted)}
 
 <body>
 
-<div class="floaters" id="floaters"></div>
-
 <div class="wrap stack">
-  <div class="card stack">
+
+  <div class="card stack" id="lock">
     <h1>Enter by unlocking 3 steps ✨</h1>
-    <p>You’re getting closer…</p>
+    <p>First it looks like nothing… but if you know the answers, the surprise opens.</p>
+
+    <div class="steps">
+      <div class="step active" id="s1">
+        <div><strong>Step 1</strong><small>Question</small></div>
+        <div class="dot"></div>
+      </div>
+      <div class="step" id="s2">
+        <div><strong>Step 2</strong><small>Photo puzzle</small></div>
+        <div class="dot"></div>
+      </div>
+      <div class="step" id="s3">
+        <div><strong>Step 3</strong><small>Mini game</small></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="card stack" id="step1">
+      <h2>Step 1: Solve the riddle 💌</h2>
+      <p class="hint">
+        Not a person, not a date,<br>
+        But a place where our story began.<br>
+        Where was it?
+      </p>
+      <input class="input" id="answer" placeholder="Type the answer..." />
+      <div class="row" style="justify-content:space-between">
+        <span id="msg1" class="msg"></span>
+        <button class="btn" id="btn1">Check</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="card stack" id="step2" style="display:none">
+      <h2>Step 2: Let's see if you've become smart enough! 🧩</h2>
+      <p class="hint"> Tap two tiles to swap until the image looks correct.</p>
+      <div class="puzzle" id="puzzle"></div>
+      <div class="row" style="justify-content:space-between">
+        <span id="msg2" class="msg"></span>
+        <button class="btn secondary" id="shuffle">Shuffle</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="card stack" id="step3" style="display:none">
+      <h2>Step 3: Match the pairs 🎴</h2>
+      <p class="hint">Match all pairs to unlock the surprise.</p>
+      <div class="memory" id="memory"></div>
+      <div class="row" style="justify-content:space-between">
+        <span id="msg3" class="msg"></span>
+        <button class="btn secondary" id="resetMem">Reset</button>
+      </div>
+    </div>
+
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn" id="open" style="display:none">Open the Surprise 💙</button>
+    </div>
   </div>
+
+  <!-- Surprise page -->
+  <div id="surprise" class="stack" style="display:none">
+    <div class="card stack center" style="text-align:center">
+      <h1>Happy Birthday, <span id="personName">Sakib</span> 🥹💙</h1>
+      <p id="subtitle">Today is yours. I’m just lucky to be part of it.</p>
+    </div>
+
+    <img class="photoBig" id="mainPhoto" alt="Main photo"/>
+
+    <div class="card stack">
+      <h2>Our little story</h2>
+      <p id="longText"></p>
+    </div>
+
+    <div class="card stack">
+      <h2>Photos</h2>
+      <div class="gallery">
+        <img id="g1" alt="photo 1">
+        <img id="g2" alt="photo 2">
+        <img id="g3" alt="photo 3">
+        <img id="g4" alt="photo 4">
+      </div>
+    </div>
+
+    <div class="card stack">
+      <h2>Quotes</h2>
+      <blockquote id="q1"></blockquote>
+      <blockquote id="q2"></blockquote>
+      <blockquote id="q3"></blockquote>
+    </div>
+  </div>
+
 </div>
 
 <script>
