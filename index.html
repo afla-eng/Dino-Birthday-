@@ -12,15 +12,19 @@
 :root{
   --bg1:#0b1d3a;
   --bg2:#0f2a52;
-  --card:#0f172aee;
-  --text:#e5edff;
-  --muted:#94a3b8;
+  --card:#0f172acc;
+
+  --text:#e5edff;     /* MAIN text (very visible) */
+  --muted:#c7d2fe;    /* secondary text (still readable) */
+
   --accent:#2563eb;
   --accent2:#38bdf8;
+
   --ok:#22c55e;
   --bad:#ef4444;
-  --shadow:0 20px 60px rgba(0,0,0,.45);
-  --radius:20px;
+
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+  --radius: 20px;
 }
 
 /* =====================
@@ -109,6 +113,16 @@ p{color:var(--muted)}
 }
 
 .hidden{display:none}
+   .card,
+.card h1,
+.card h2,
+.card h3,
+.card p,
+.card small,
+.card span,
+.card label {
+  color: var(--text);
+}
 </style>
 </head>
 
