@@ -35,12 +35,10 @@ body{
   font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;
   color:var(--text);
   min-height:100vh;
-  background:
-    radial-gradient(1200px 800px at 10% 10%, #1e3a8a55, transparent 60%),
-    radial-gradient(1200px 800px at 90% 20%, #0ea5e955, transparent 60%),
-    linear-gradient(180deg, var(--bg1), var(--bg2));
-  overflow-x:hidden;
-}
+ background:
+  radial-gradient(900px 600px at 20% 15%, rgba(255,255,255,.65), transparent 60%),
+  radial-gradient(900px 600px at 85% 25%, rgba(255,255,255,.55), transparent 62%),
+  linear-gradient(180deg, #78d6ff 0%, #4aa9ff 55%, #2e6bff 100%);
 
 /* =====================
    FLOATING STICKERS
@@ -53,38 +51,27 @@ body{
   z-index:0;
 }
 
-.floaterSticker{
-  position:absolute;
-  width:50px;
-  height:50px;
-  object-fit:contain;
-  opacity:0;
-  filter:drop-shadow(0 10px 18px rgba(0,0,0,.25));
-}
-
 /* animations */
 @keyframes floatDown{
   from{ transform:translateY(-120vh) rotate(-15deg); opacity:0 }
   10%{opacity:1}
   to{ transform:translateY(120vh) rotate(15deg); opacity:0 }
 }
-
-@keyframes floatUp{
-  from{ transform:translateY(120vh) rotate(15deg); opacity:0 }
-  10%{opacity:1}
-  to{ transform:translateY(-120vh) rotate(-15deg); opacity:0 }
+   
+.floaterSticker{
+  position:absolute;
+  width:60px;
+  height:60px;
+  object-fit:contain;
+  pointer-events:none;
+  z-index:1;
+  animation: floatDown linear infinite;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
 }
 
-@keyframes floatRight{
-  from{ transform:translateX(-120vw) rotate(-15deg); opacity:0 }
-  10%{opacity:1}
-  to{ transform:translateX(120vw) rotate(15deg); opacity:0 }
-}
-
-@keyframes floatLeft{
-  from{ transform:translateX(120vw) rotate(15deg); opacity:0 }
-  10%{opacity:1}
-  to{ transform:translateX(-120vw) rotate(-15deg); opacity:0 }
+.wrap, .card {
+  position: relative;
+  z-index: 5;   /* UI above stickers */
 }
 
 /* =====================
@@ -92,12 +79,17 @@ body{
 ===================== */
 .wrap{max-width:980px;margin:auto;padding:18px}
 .card{
-  background:var(--card);
-  backdrop-filter:blur(10px);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
+  background: rgba(4, 22, 56, 0.92);      /* deep blue */
+  border: 1px solid rgba(56,189,248,.35); /* aquatic edge */
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  backdrop-filter: blur(10px);
   padding:18px;
+  color: #eaf6ff; /* readable text */
 }
+   p, .hint, small { color: rgba(234,246,255,.82); }
+h1, h2, h3 { color: #ffffff; }
+   
 .stack{display:grid;gap:14px}
 h1,h2{margin:0}
 p{color:var(--muted)}
@@ -151,7 +143,7 @@ const STICKERS = [
   "superman.png"
 ];
 
-const animations = ["floatUp","floatDown","floatLeft","floatRight"];
+const animations = ["floatDown"];
 
 function spawnSticker(){
   const img = document.createElement("img");
@@ -161,11 +153,9 @@ function spawnSticker(){
   const anim = animations[Math.floor(Math.random()*animations.length)];
   img.style.animation = `${anim} ${8+Math.random()*10}s linear infinite`;
 
-  if(anim.includes("Up") || anim.includes("Down")){
-    img.style.left = Math.random()*100 + "vw";
-  } else {
-    img.style.top = Math.random()*100 + "vh";
-  }
+   img.style.left = Math.random() * 100 + "vw";
+img.style.top = (-20 - Math.random() * 30) + "vh";  // start ABOVE screen
+
 
   floaters.appendChild(img);
 
