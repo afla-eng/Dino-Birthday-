@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Unlock the Surprise ✨</title>
 <style>
+  :root{
+  --bg1:#0b1d3a;      /* deep navy */
+  --bg2:#0f2a52;      /* dark blue */
+  --card:#0f172aee;   /* glassy dark card */
+  --text:#e5edff;
+  --muted:#94a3b8;
+  --accent:#2563eb;   /* Marvel blue */
+  --accent2:#38bdf8;  /* electric cyan */
+  --ok:#22c55e;
+  --bad:#ef4444;
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+  --radius: 20px;
+}
   /* ============================= */
 /* Floating Marvel Stickers     */
 /* ============================= */
@@ -42,10 +55,10 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       min-height:100vh;
-      background:
-        radial-gradient(1200px 800px at 10% 10%, var(--bg2), transparent 60%),
-        radial-gradient(1200px 800px at 90% 20%, var(--bg1), transparent 60%),
-        linear-gradient(180deg, #fff, #fff8fd);
+     background:
+  radial-gradient(1200px 800px at 10% 10%, #1e3a8a55, transparent 60%),
+  radial-gradient(1200px 800px at 90% 20%, #0ea5e955, transparent 60%),
+  linear-gradient(180deg, #0b1d3a, #0f2a52);
       overflow-x:hidden;
     }
     .wrap{max-width:980px;margin:0 auto;padding:18px}
@@ -266,11 +279,10 @@
     <div class="card stack fadeIn" id="lock">
       <div class="row" style="justify-content:space-between">
         <span class="pill">🔒 Locked Surprise</span>
-        <span class="badge">Mobile-friendly • Free hosting</span>
       </div>
 
       <h1>Enter by unlocking 3 steps ✨</h1>
-      <p>First it looks like nothing… but if you know the answers, the surprise opens.</p>
+      <p> Hope you will be smart enough to solve this and open the surprise. </p>
 
       <div class="steps">
         <div class="step active" id="s1"><div><strong>Step 1</strong><small>Question</small></div><div class="dot"></div></div>
@@ -295,7 +307,7 @@ Where was it?
 
       <!-- Step 2 -->
       <div class="card stack" id="step2" style="display:none;background:rgba(255,255,255,.55)">
-        <h2>Step 2: Fix the photo puzzle 🧩</h2>
+        <h2> Step 2: let's see if you're able to fix the picture of us 🧩</h2>
         <p class="hint">Tap two tiles to swap until the image looks correct.</p>
         <div class="puzzle" id="puzzle"></div>
         <div class="row" style="justify-content:space-between">
